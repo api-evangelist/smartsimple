@@ -1,0 +1,110 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: SmartSimple
+providerId: smartsimple
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Grants Management
+- SaaS
+- Enterprise
+- Plans
+description: >-
+  SmartSimple Cloud is sold as a configurable enterprise SaaS subscription, not
+  a self-serve metered API product. Pricing is contact-sales - published entry
+  points cited by third parties put it around 6,000 USD per year (roughly 500
+  USD per month) at the low end, with the annual fee scaled by the number of
+  internal users, the hours they spend in the system each month, the number of
+  external users (applicants, reviewers), the hosting model (multi-tenant,
+  single-tenant, or on-premise), and optional add-ons such as the High
+  Performance Private Cloud and AI features. Implementation is priced separately
+  by project complexity, configured modules, and required integrations. The
+  APIs (SmartConnect, OData, SOAP) are included with the platform subscription
+  rather than billed as a separate line item. Exact figures are not reconciled
+  here.
+notes: >-
+  Figures are indicative and drawn from third-party listings; SmartSimple does
+  not publish a fixed price sheet. Confirm current pricing, tiers, and API
+  availability directly with SmartSimple sales during reconciliation.
+sources:
+- https://www.smartsimple.com/pricing
+- https://www.smartsimple.com/
+- https://www.capterra.com/p/166429/SmartSimple-Cloud/
+plans:
+- id: smartsimple-cloud
+  name: SmartSimple Cloud (Subscription)
+  type: enterprise
+  description: >-
+    The core cloud platform subscription covering grants management, research
+    and government funding, CSR, scholarships, and case management. Includes
+    the SmartConnect JSON REST API, the OData reporting service, and the legacy
+    SOAP Web Services API on the customer instance. Annual fee scales with
+    internal users, monthly usage hours, external users, and hosting model.
+  entries:
+  - label: Annual Subscription
+    name: annual_subscription
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: from approx 6000 USD per year (contact sales; scales by users, usage, and hosting)
+    userMultiplied: true
+  elements:
+  - name: SmartConnect JSON REST API
+  - name: OData Reporting API
+  - name: SOAP Web Services API
+  - name: Universal Tracking Application (UTA)
+  - name: Configurable Workflows
+- id: smartsimple-hosting-addons
+  name: Hosting and Add-Ons
+  type: enterprise
+  description: >-
+    Optional hosting upgrades and add-ons layered on the subscription -
+    single-tenant or on-premise hosting, the High Performance Private Cloud
+    offering, and AI features. Priced by configuration.
+  entries:
+  - label: Hosting and Add-Ons
+    name: hosting_addons
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Single-Tenant Hosting
+  - name: On-Premise Hosting
+  - name: High Performance Private Cloud
+  - name: AI Features
+- id: smartsimple-implementation
+  name: Implementation and Services
+  type: enterprise
+  description: >-
+    One-time and ongoing professional services - configuration,
+    integrations, data migration, training, and premium support - priced by
+    the complexity of the client's processes and the modules configured.
+  entries:
+  - label: Implementation
+    name: implementation
+    type: flat
+    metric: project
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales (scoped by complexity)
+    userMultiplied: false
+  elements:
+  - name: Configuration
+  - name: Integrations
+  - name: Training
+  - name: Premium Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

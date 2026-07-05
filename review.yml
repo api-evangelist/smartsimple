@@ -1,0 +1,113 @@
+aid: smartsimple
+name: SmartSimple
+review:
+  question: Does SmartSimple expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. SmartSimple's documented programmatic
+    surfaces are all request/response - the SmartConnect JSON REST API, the
+    OData reporting service, and the legacy SOAP Web Services API. There is no
+    server-push transport (WebSocket or SSE) documented on any SmartSimple
+    interface to model. Event-style integration is handled by outbound
+    workflow-triggered callouts (server-to-endpoint HTTP), not a WebSocket
+    channel on SmartSimple's own API.
+findings:
+  summary: |
+    SmartSimple does not publish a documented public WebSocket API. SmartSimple
+    Cloud is a configurable SaaS platform for grants management, research and
+    government funding, CSR, scholarships, and case management. Each customer
+    runs on their own instance (alias.smartsimple.com) and enables APIs there;
+    there is no single public API gateway. Three programmatic interfaces are
+    documented per instance: SmartConnect (a JSON RESTful API at
+    /API/{version}/{recordtype}/), an OData reporting service (V2/V3/V4), and a
+    legacy SOAP Web Services API (WSDL at /WS/services/UtaUpdate?wsdl). All are
+    request/response over HTTPS. No realtime, bidirectional, or streaming
+    WebSocket (ws:// or wss://) endpoint is documented on any SmartSimple
+    interface.
+  accessModel: |
+    Instance-scoped and gated by a customer subscription. The documentation is
+    public (wiki.smartsimple.com and supporthub.smartsimple.com), but calling
+    the API requires a provisioned SmartSimple tenant plus either an API user
+    account (username, password, companyid, alias) or a Bearer user access
+    token, and a per-function encrypted apitoken for SmartConnect. Because the
+    base URL is per-instance and no anonymous public endpoint exists, the
+    endpoints in this catalog are MODELED against the documented per-instance
+    API surface rather than confirmed against a live public base URL.
+    endpointsModeled: true
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://{alias}.smartsimple.com/API/1
+      documented: true
+      note: SmartConnect JSON API. APIVersion 2 standardized syntax as of the August 2022 upgrade. Per-instance base URL.
+    - protocol: OData
+      scheme: https
+      baseURL: https://{alias}.smartsimple.com/OData/V4
+      documented: true
+      note: Reporting service; pub (public) and pri (basic-auth) variants for V2/V3/V4. Reports are the only exposed entities.
+    - protocol: SOAP
+      scheme: https
+      baseURL: https://{alias}.smartsimple.biz/WS/services
+      documented: true
+      note: Legacy Web Services API. WSDL at /WS/services/UtaUpdate?wsdl. Superseded by SmartConnect but still documented.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in SmartSimple's SmartConnect, OData, or Web Services documentation as of the review date.
+  endpointsModeled:
+    - POST https://{alias}.smartsimple.com/API/1/levelone/
+    - POST https://{alias}.smartsimple.com/API/1/leveltwo/
+    - POST https://{alias}.smartsimple.com/API/1/levelthree/
+    - POST https://{alias}.smartsimple.com/API/1/user/
+    - POST https://{alias}.smartsimple.com/API/1/company/
+    - POST https://{alias}.smartsimple.com/API/1/transactions/
+    - POST https://{alias}.smartsimple.com/API/1/report/
+    - POST https://{alias}.smartsimple.com/API/1/sysvar/
+    - GET  https://{alias}.smartsimple.com/OData/V4/pub/{reportid}/Service.svc/
+    - GET  https://{alias}.smartsimple.com/OData/V4/pri/{reportid}/Service.svc/
+    - GET  https://{alias}.smartsimple.biz/WS/services/UtaUpdate?wsdl
+  actionsModeled:
+    - Get - retrieve a single record
+    - List - retrieve multiple records with criteria, sortby, and pagination
+    - Update - modify fields or create records (recordid 0 creates)
+    - Get Meta / Update Meta - read or modify UTA configuration
+    - Download File / List Files / Search Files
+    - List Associations / Update Associations
+    - List Multiple Addresses / Update Multiple Addresses
+    - Variables Replace
+sources:
+  - url: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+    type: Documentation
+    note: SmartConnect JSON REST API - endpoints, actions, auth, criteria/sort/pagination. All request/response. No WebSocket.
+  - url: https://supporthub.smartsimple.com/hc/en-us/articles/33184199710615-SmartConnect-RESTful-API
+    type: APIReference
+    note: SmartConnect endpoint table (/API/1/{recordtype}/), action types, auth methods, response format, 1000 calls/instance/hour limit.
+  - url: https://wiki.smartsimple.com/wiki/APIs
+    type: Documentation
+    note: SmartSimple supports three APIs - SmartConnect (JSON), OData, and SOAP Web Services.
+  - url: https://wiki.smartsimple.com/wiki/Odata_Overview
+    type: Documentation
+    note: OData V2/V3/V4 report endpoints, pub and pri variants.
+  - url: https://wiki.smartsimple.com/wiki/Web_Services_Overview
+    type: Documentation
+    note: Legacy SOAP Web Services WSDL at /WS/services/UtaUpdate?wsdl.
+  - url: https://api.smartsimple.com/devtools/api.html
+    type: Tool
+    note: Interactive SmartConnect demonstration tool. Requires instance credentials (username, password, instance id, alias).
+  - url: https://www.smartsimple.com/pricing
+    type: Pricing
+    note: Contact-sales subscription; annual fee based on users, usage hours, hosting model, and add-ons.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. SmartSimple's own documented APIs
+    are request/response - SmartConnect (JSON REST), OData (reporting), and a
+    legacy SOAP Web Services API - all per customer instance. No AsyncAPI
+    document was created because there is no server-push transport on any
+    SmartSimple interface to model. Endpoints in the catalog are modeled
+    against the documented per-instance API because access is instance-scoped
+    and gated by a customer subscription, with no single public base URL.

@@ -1,0 +1,62 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: SmartSimple
+providerId: smartsimple
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Grants Management
+- SaaS
+- Rate Limiting
+- Quotas
+description: >-
+  SmartSimple's SmartConnect JSON REST API publishes concrete throughput
+  guidance. Each instance is limited to roughly 1,000 API calls per hour, and a
+  single List call returns at most 10,000 records - larger result sets must be
+  paged with recordsperpage, recordstart, and pagenum. SmartSimple explicitly
+  notes the API is not intended for high-volume bulk export or import. Rate
+  limits for the OData reporting service and the legacy SOAP Web Services API
+  are not separately documented and are governed by the customer instance and
+  its hosting model.
+notes: >-
+  Numeric limits reflect the SmartConnect documentation as of the review date
+  and can vary by instance, hosting tier, and negotiated agreement. Confirm
+  current limits for your instance with SmartSimple during reconciliation.
+sources:
+- https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+- https://supporthub.smartsimple.com/hc/en-us/articles/33184199710615-SmartConnect-RESTful-API
+responseCodes:
+  unauthorized: 401
+limits:
+- name: SmartConnect API Calls
+  scope: instance
+  metric: requests
+  limit: approx 1000 per hour
+  notes: Documented per-instance hourly ceiling for SmartConnect calls.
+- name: Records Per Call
+  scope: request
+  metric: records
+  limit: 10000
+  notes: A single List call returns at most 10,000 records; larger sets require pagination.
+- name: OData Throughput
+  scope: instance
+  metric: requests
+  limit: not published
+  notes: No separate numeric OData rate limit is documented; governed by the instance and hosting model.
+- name: SOAP Web Services Throughput
+  scope: instance
+  metric: requests
+  limit: not published
+  notes: No separate numeric SOAP rate limit is documented for the legacy Web Services API.
+policies:
+- name: Pagination
+  description: Use recordsperpage, recordstart, and pagenum in othersettings to page through result sets beyond the 10,000-record ceiling.
+- name: Not For Bulk Transfer
+  description: SmartConnect is documented as not intended for high-volume data export or import; design integrations to stay within the hourly call ceiling.
+- name: Authentication Failures
+  description: Invalid credentials, a non-API user, or an incorrect companyid return 401 Unauthorized.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

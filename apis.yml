@@ -1,0 +1,177 @@
+aid: smartsimple
+url: https://raw.githubusercontent.com/api-evangelist/smartsimple/refs/heads/main/apis.yml
+name: SmartSimple
+kind: company
+description: SmartSimple Software builds SmartSimple Cloud, a configurable
+  cloud platform for grants management, research and government funding
+  administration, corporate social responsibility (CSR), scholarships, and
+  case management. The platform exposes three documented programmatic
+  interfaces on each client instance - SmartConnect (a JSON-based RESTful
+  API), an OData reporting API, and a legacy SOAP Web Services API - covering
+  records (UTA Level 1/2/3), users, organizations, transactions, custom
+  fields, and files. Access is instance-scoped - every customer runs on their
+  own alias.smartsimple.com tenant and provisions an API user account or
+  access token, so the documented endpoints are modeled against a customer
+  instance rather than a single public gateway.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Grants Management
+- Research Administration
+- CSR
+- Funding
+- Case Management
+- SaaS
+- REST
+- OData
+- SOAP
+created: '2026-07-05'
+modified: '2026-07-05'
+specificationVersion: '0.19'
+apis:
+- aid: smartsimple:smartsimple-smartconnect-records-api
+  name: SmartSimple SmartConnect Records API
+  tags:
+  - Records
+  - UTA
+  - Custom Fields
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+  baseURL: https://{alias}.smartsimple.com/API/1
+  properties:
+  - url: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+    type: Documentation
+  - url: https://supporthub.smartsimple.com/hc/en-us/articles/33184199710615-SmartConnect-RESTful-API
+    type: APIReference
+  description: Get, list, and update (create) records stored in SmartSimple's
+    Universal Tracking Application (UTA) at Level 1, Level 2, and Level 3 -
+    the grant applications, reviews, and sub-records at the heart of the
+    platform. Standard fields are addressed with sf_ prefixes and custom
+    fields with cf_ (by name or ID). Endpoints are /API/1/levelone/,
+    /API/1/leveltwo/, and /API/1/levelthree/ on a customer instance.
+    Endpoints are modeled against the documented per-instance API - no single
+    public base URL exists.
+- aid: smartsimple:smartsimple-smartconnect-users-api
+  name: SmartSimple SmartConnect Users API
+  tags:
+  - Users
+  - Contacts
+  - People
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+  baseURL: https://{alias}.smartsimple.com/API/1
+  properties:
+  - url: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+    type: Documentation
+  description: Get, list, and update the people (applicants, reviewers,
+    contacts, and internal staff) in a SmartSimple instance via the
+    /API/1/user/ endpoint, including their standard and custom profile
+    fields and multiple addresses. Endpoints are modeled against the
+    documented per-instance API - authentication requires an API user account
+    or Bearer access token on that instance.
+- aid: smartsimple:smartsimple-smartconnect-organizations-api
+  name: SmartSimple SmartConnect Organizations API
+  tags:
+  - Organizations
+  - Companies
+  - Accounts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+  baseURL: https://{alias}.smartsimple.com/API/1
+  properties:
+  - url: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+    type: Documentation
+  description: Get, list, and update the organizations (companies, grantee
+    institutions, and accounts) in a SmartSimple instance via the
+    /API/1/company/ endpoint, with their standard and custom fields and
+    multiple-address records. Endpoints are modeled against the documented
+    per-instance API rather than a single public gateway.
+- aid: smartsimple:smartsimple-smartconnect-transactions-api
+  name: SmartSimple SmartConnect Transactions API
+  tags:
+  - Transactions
+  - Payments
+  - UTA
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+  baseURL: https://{alias}.smartsimple.com/API/1
+  properties:
+  - url: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+    type: Documentation
+  description: Get, list, and update UTA transaction records (payments,
+    disbursements, budget lines, and other transactional line items attached
+    to grants) via the /API/1/transactions/ endpoint, with criteria filtering,
+    sorting, and pagination. Endpoints are modeled against the documented
+    per-instance API.
+- aid: smartsimple:smartsimple-smartconnect-files-api
+  name: SmartSimple SmartConnect Files API
+  tags:
+  - Files
+  - Documents
+  - Attachments
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+  baseURL: https://{alias}.smartsimple.com/API/1
+  properties:
+  - url: https://wiki.smartsimple.com/wiki/SmartConnect_-_RESTful_API
+    type: Documentation
+  description: Download a single file, list the files on a record or field,
+    and keyword-search across files using the SmartConnect Download File,
+    List Files, and Search Files actions. Files are the supporting documents
+    and attachments uploaded against records and users. Endpoints are modeled
+    against the documented per-instance API.
+- aid: smartsimple:smartsimple-odata-reporting-api
+  name: SmartSimple OData Reporting API
+  tags:
+  - OData
+  - Reporting
+  - Analytics
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://wiki.smartsimple.com/wiki/Odata_Overview
+  baseURL: https://{alias}.smartsimple.com/OData/V4
+  properties:
+  - url: https://wiki.smartsimple.com/wiki/Odata_Overview
+    type: Documentation
+  description: Consume SmartSimple report data through OData V2, V3, and V4
+    services, with public (pub) endpoints for openly exposed data and private
+    (pri) endpoints requiring basic authentication - for example
+    /OData/V4/pri/{reportid}/Service.svc/. Reports are currently the only
+    entities exposed over OData. Endpoints are modeled against the documented
+    per-instance service.
+- aid: smartsimple:smartsimple-web-services-soap-api
+  name: SmartSimple Web Services (SOAP) API
+  tags:
+  - SOAP
+  - Web Services
+  - Legacy
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://wiki.smartsimple.com/wiki/Web_Services_Overview
+  baseURL: https://{alias}.smartsimple.biz/WS/services
+  properties:
+  - url: https://wiki.smartsimple.com/wiki/Web_Services_Overview
+    type: Documentation
+  description: The legacy SOAP Web Services API, exposed per instance via a
+    WSDL at /WS/services/UtaUpdate?wsdl (for example
+    https://smart.smartsimple.biz/WS/services/UtaUpdate?wsdl). It predates
+    SmartConnect - new integrations are directed to the JSON SmartConnect
+    REST API, but the SOAP interface remains documented and supported.
+    Endpoints are modeled against the documented per-instance service.
+common:
+- type: Website
+  url: https://www.smartsimple.com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/smartsimple-software-inc
+- type: Documentation
+  url: https://wiki.smartsimple.com/wiki/APIs
+- type: InteractiveDemo
+  url: https://api.smartsimple.com/devtools/api.html
+- type: Pricing
+  url: https://www.smartsimple.com/pricing
+- type: Plans
+  url: plans/smartsimple-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/smartsimple-rate-limits.yml
+- type: FinOps
+  url: finops/smartsimple-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
