@@ -156,6 +156,10 @@ apis:
     REST API, but the SOAP interface remains documented and supported.
     Endpoints are modeled against the documented per-instance service.
 common:
+- type: TrustCenter
+  url: security/smartsimple-trust-center.yml
+- type: DomainSecurity
+  url: security/smartsimple-domain-security.yml
 - type: Website
   url: https://www.smartsimple.com
 - type: LinkedIn

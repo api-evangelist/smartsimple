@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.smartsimple.com/trust-security-security
+url: https://www.smartsimple.com/trust-security-security
+certifications:
+- ISO 27001
+- HIPAA
+evidence:
+- source: https://www.smartsimple.com/trust-security-security
+  keywords:
+  - iso 27001
+  - iso/iec 27001
+  - hipaa
