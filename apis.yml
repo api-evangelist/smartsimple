@@ -32,6 +32,16 @@ tags:
 - CSR
 - Funding
 - Case Management
+- Software-as-a-Service
+- REST
+- OData
+- SOAP
+tags_raw:
+- Grants Management
+- Research Administration
+- CSR
+- Funding
+- Case Management
 - SaaS
 - REST
 - OData
@@ -65,6 +75,10 @@ apis:
 - aid: smartsimple:smartsimple-smartconnect-users-api
   name: SmartSimple SmartConnect Users API
   tags:
+  - User
+  - Contacts
+  - People
+  tags_raw:
   - Users
   - Contacts
   - People
@@ -83,6 +97,10 @@ apis:
 - aid: smartsimple:smartsimple-smartconnect-organizations-api
   name: SmartSimple SmartConnect Organizations API
   tags:
+  - Organization
+  - Companies
+  - Account
+  tags_raw:
   - Organizations
   - Companies
   - Accounts
@@ -100,6 +118,10 @@ apis:
 - aid: smartsimple:smartsimple-smartconnect-transactions-api
   name: SmartSimple SmartConnect Transactions API
   tags:
+  - Transaction
+  - Payments
+  - UTA
+  tags_raw:
   - Transactions
   - Payments
   - UTA
@@ -117,6 +139,10 @@ apis:
 - aid: smartsimple:smartsimple-smartconnect-files-api
   name: SmartSimple SmartConnect Files API
   tags:
+  - File
+  - Documents
+  - Attachments
+  tags_raw:
   - Files
   - Documents
   - Attachments
